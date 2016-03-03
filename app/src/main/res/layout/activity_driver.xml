@@ -92,7 +92,7 @@
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:text="Currently loggoen in as : "
+        android:text="Currently logged in as : "
         htext:animateType="line"
         android:layout_below="@+id/logout"
         android:layout_alignParentLeft="true"

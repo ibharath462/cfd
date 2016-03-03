@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "tough-racer-117713",
+    "project_number": "174917452682",
+    "name": "My Project"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174917452682:android:c400f9d26cb759be",
+        "client_id": "android:com.example.bharath.bustrack",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.bharath.bustrack",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174917452682-eelo6h4r3er8qh3h68j35of9it2q72rc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bharath.bustrack",
+            "certificate_hash": "DC55D393D293B8F4045183C6E0B9D0CD278393EB"
+          }
+        },
+        {
+          "client_id": "174917452682-2c4nfnodd6dougup6d5jsk83krp5teht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

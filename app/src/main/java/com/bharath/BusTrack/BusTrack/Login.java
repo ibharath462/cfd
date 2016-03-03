@@ -1,7 +1,9 @@
 package com.bharath.BusTrack.BusTrack;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +22,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.hanks.htextview.HTextViewType;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.UserAuthenticationCallback;
@@ -39,6 +47,8 @@ public class Login extends AppCompatActivity implements LocationListener{
     String busno=null;
 
     Double lat,lon;
+
+    ProgressDialog progressDialog;
 
 
     private MobileServiceTable<HelloAzure> bus;
@@ -66,6 +76,8 @@ public class Login extends AppCompatActivity implements LocationListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
 
+        progressDialog = new ProgressDialog(Login.this);
+
         mHandler=new Handler();
 
         login=(info.hoang8f.widget.FButton)findViewById(R.id.login);
@@ -82,6 +94,8 @@ public class Login extends AppCompatActivity implements LocationListener{
             public void onClick(View v) {
 
                 authenticate();
+                progressDialog.setMessage("Logging you in...");
+                progressDialog.show();
 
             }
         });
@@ -91,7 +105,15 @@ public class Login extends AppCompatActivity implements LocationListener{
             public void onClick(View v) {
                 mClient.logout();
                 lflag=0;
-                Toast.makeText(getApplicationContext(), "Logged out successfull", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                    ((ActivityManager)getApplicationContext().getSystemService(ACTIVITY_SERVICE))
+                            .clearApplicationUserData(); // note: it has a return value!
+                    Intent i=new Intent(Login.this,Login.class);
+                    startActivity(i);
+                } else {
+                }
+                busno="Please login.";
+                current.animateText("Current login : " + busno);
             }
         });
 
@@ -184,11 +206,18 @@ public class Login extends AppCompatActivity implements LocationListener{
 
                         busno = "T70";
                     } else {
+                        if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                            ((ActivityManager)getApplicationContext().getSystemService(ACTIVITY_SERVICE))
+                                    .clearApplicationUserData(); // note: it has a return value!
+                            Intent i=new Intent(Login.this,Login.class);
+                            startActivity(i);
+                        }
                         Toast.makeText(getApplicationContext(), "Please login with the anyone of the two ID's.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Login error ", Toast.LENGTH_SHORT).show();
                 }
+                progressDialog.dismiss();
 
             }
         });
@@ -280,7 +309,7 @@ public class Login extends AppCompatActivity implements LocationListener{
         item.longitude=lon;
         item.id=busno;
 
-        current.animateText("Currently logged : " + busno);
+        current.animateText("Current login : " + busno);
 
         bus.update(item, new TableOperationCallback<HelloAzure>() {
             @Override
