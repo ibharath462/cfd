@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanks.htextview.HTextView;
@@ -67,7 +66,27 @@ public class Home extends AppCompatActivity {
 
 
         //title.setTypeface(future);
-        
+
+        v0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Home.this,Login.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        v1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i=new Intent(Home.this,Stop.class);
+                startActivity(i);
+                finish();
+
+            }
+        });
+
 
 
         mode.setAnimateType(HTextViewType.LINE);
@@ -125,7 +144,7 @@ quit.setOnClickListener(new View.OnClickListener() {
                                 i++;
                                 if(i%2==0)
                                 {
-                                    mode.animateText("Driver mode to transmit.");
+                                    mode.animateText("Login mode to transmit.");
                                 }
                                 else if(i%3==0)
                                 {

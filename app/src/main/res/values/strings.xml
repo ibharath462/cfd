@@ -3,6 +3,9 @@
 
     <string name="title_menu_github">View on GitHub</string>
 
+    <string name="fiveb">Login for 5B \n Username : bustrack5b@gmail.com \n Password : bustrack123"</string>
+    <string name="tseventy">Login for T70 \n Username : bustrackt70b@gmail.com \n Password : bustrack123"</string>
+
     <string name="label_options">Options:</string>
     <string name="label_option_fullscreen">Enable fullscreen</string>
     <string name="label_option_custom_fragments">Enable custom fragments</string>

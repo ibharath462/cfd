@@ -1,14 +1,17 @@
 package com.bharath.BusTrack.BusTrack;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
-public class MaterialIntroActivity extends IntroActivity {
+public class MaterialIntroActivity extends IntroActivity{
 
 
     @Override
@@ -17,6 +20,8 @@ public class MaterialIntroActivity extends IntroActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        MultiDex.install(this);
 
         super.onCreate(savedInstanceState);
 
@@ -60,5 +65,11 @@ public class MaterialIntroActivity extends IntroActivity {
         startActivity(i);
         finish();
         super.onDestroy();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }
