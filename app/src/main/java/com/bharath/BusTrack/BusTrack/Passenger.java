@@ -1,5 +1,6 @@
 package com.bharath.BusTrack.BusTrack;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +12,11 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,9 +56,10 @@ public class Passenger extends AppCompatActivity implements OnMapReadyCallback {
 
     private MobileServiceClient mClient;
 
+
     enum stops5A{
 
-        Mylapore, Mandaveli, AMS_Hospital, Adayar, Anna_University,Saidapet,T_Nagar,Testing;
+        Mylapore, Mandaveli, AMS_Hospital, Adayar, Anna_University,Saidapet,T_Nagar,Testing,Custom;
 
     }
 
@@ -76,13 +80,15 @@ public class Passenger extends AppCompatActivity implements OnMapReadyCallback {
 
     Double lats=13.026611111111112,longs=80.26583333333333;
 
-    String refresh,buss,stop,id;
+    String refresh,buss,stop,id,custom;
 
     ProgressDialog progressDialog;
 
     int rr;
 
     Handler mHandler = null;
+
+    EditText input=null;
 
     private MobileServiceTable<HelloAzure> bus;
 
@@ -100,9 +106,12 @@ public class Passenger extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_passenger);
 
 
+
+
         refresh=getIntent().getStringExtra("refresh");
         buss=getIntent().getStringExtra("bus");
         stop=getIntent().getStringExtra("stop");
+        custom=getIntent().getStringExtra("custom");
         durr=(TextView)findViewById(R.id.durr);
 
 
@@ -183,6 +192,11 @@ public class Passenger extends AppCompatActivity implements OnMapReadyCallback {
                     destination5A = destinations5A[7];
                     break;
                 }
+                case Custom: {
+                    destination5A = custom;
+                    break;
+                }
+
             }
 
             destination=destination5A;
@@ -498,6 +512,11 @@ public class Passenger extends AppCompatActivity implements OnMapReadyCallback {
                         destination5A = destinations5A[7];
                         break;
                     }
+                    case Custom: {
+                        destination5A = custom;
+                        break;
+                    }
+
                 }
 
                 destination=destination5A;
