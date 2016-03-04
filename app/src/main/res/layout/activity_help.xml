@@ -2,52 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:htext="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_custom_fragment_2"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bharath.BusTrack.BusTrack.Passenger">
+    tools:context="com.bharath.BusTrack.BusTrack.Help">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_weight="100"
         android:layout_height="match_parent">
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.and roid.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:id="@+id/map"
-            tools:context=".MapsActivity"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
-            android:textColor="#FFFFFF"
-            android:id="@+id/durr"
             android:textStyle="bold"
-            android:text="Estimating the time of arrival, calculation may vary according to your network."/>
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:text="Help:\n1.Have an active network connection, for he driver mode you should also have GPS enabled on your phone.\n2.Login with the any on of the given email ids in the driver mode.\n3.In passenger mode choose the approproate bus stop and know the estimated time of arrival."
+            />
         <info.hoang8f.widget.FButton
-            android:id="@+id/back"
+            android:id="@+id/primary_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
+            android:layout_gravity="center"
             android:minHeight="@dimen/demo_button_min_height"
             android:minWidth="@dimen/demo_button_min_width"
-            android:text="Change Stop"
+            android:text="Back"
             android:textColor="@android:color/white"
-            fbutton:buttonColor="@color/fbutton_color_carrot"
+            fbutton:buttonColor="@color/fbutton_color_alizarin"
             fbutton:shadowEnabled="true"
-
+            android:layout_below="@+id/refresh"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp" />
-    </LinearLayout>
+            android:layout_marginTop="89dp" />
 
+
+    </LinearLayout>
 </RelativeLayout>

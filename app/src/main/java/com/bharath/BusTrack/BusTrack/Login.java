@@ -38,30 +38,30 @@ import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.net.MalformedURLException;
 
-public class Login extends AppCompatActivity implements LocationListener{
+public class Login extends AppCompatActivity implements LocationListener {
 
     private MobileServiceClient mClient;
 
-    String id=null;
+    String id = null;
 
-    String busno=null;
+    String busno = null;
 
-    Double lat,lon;
+    Double lat, lon;
 
     ProgressDialog progressDialog;
 
 
     private MobileServiceTable<HelloAzure> bus;
 
-    int lflag=0;
+    int lflag = 0;
 
-    int i=0;
+    int i = 0;
 
-    Handler mHandler=null;
+    Handler mHandler = null;
 
-    info.hoang8f.widget.FButton login,logout;
+    info.hoang8f.widget.FButton login, logout;
 
-    com.hanks.htextview.HTextView text,text1,text2,current;
+    com.hanks.htextview.HTextView text, text1, text2, current;
 
     LocationManager locationManager = null;
 
@@ -78,15 +78,15 @@ public class Login extends AppCompatActivity implements LocationListener{
 
         progressDialog = new ProgressDialog(Login.this);
 
-        mHandler=new Handler();
+        mHandler = new Handler();
 
-        login=(info.hoang8f.widget.FButton)findViewById(R.id.login);
-        logout=(info.hoang8f.widget.FButton)findViewById(R.id.logout);
+        login = (info.hoang8f.widget.FButton) findViewById(R.id.login);
+        logout = (info.hoang8f.widget.FButton) findViewById(R.id.logout);
 
-        text=(com.hanks.htextview.HTextView)findViewById(R.id.text);
-        text1=(com.hanks.htextview.HTextView)findViewById(R.id.text1);
-        text2=(com.hanks.htextview.HTextView)findViewById(R.id.text2);
-        current=(com.hanks.htextview.HTextView)findViewById(R.id.current);
+        text = (com.hanks.htextview.HTextView) findViewById(R.id.text);
+        text1 = (com.hanks.htextview.HTextView) findViewById(R.id.text1);
+        text2 = (com.hanks.htextview.HTextView) findViewById(R.id.text2);
+        current = (com.hanks.htextview.HTextView) findViewById(R.id.current);
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +94,8 @@ public class Login extends AppCompatActivity implements LocationListener{
             public void onClick(View v) {
 
                 authenticate();
-                progressDialog.setMessage("Logging you in...");
-                progressDialog.show();
+                //progressDialog.setMessage("Logging you in...");
+                //progressDialog.show();
 
             }
         });
@@ -103,6 +103,18 @@ public class Login extends AppCompatActivity implements LocationListener{
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (ActivityCompat.checkSelfPermission(Login.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Login.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                locationManager.removeUpdates(Login.this);
                 mClient.logout();
                 lflag=0;
                 if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {

@@ -96,6 +96,9 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(Home.this,Help.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -144,7 +147,7 @@ quit.setOnClickListener(new View.OnClickListener() {
                                 i++;
                                 if(i%2==0)
                                 {
-                                    mode.animateText("Login mode to transmit.");
+                                    mode.animateText("Driver mode to transmit.");
                                 }
                                 else if(i%3==0)
                                 {

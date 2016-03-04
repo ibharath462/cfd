@@ -31,4 +31,17 @@
     <string name="label_fake_login_success">Successfully faked login.</string>
 
     <string name="title_fragment_custom">Take off!</string>
+
+    <string name="oneTitle">Welcome to BusTrack!</string>
+    <string name="onedes">Our android app offers live tracking of bus and estimated time of arrival of bus at a particular bus stop.</string>
+
+    <string name="twoTitle">Unified app for both tracking and as a GPS receiver</string>
+    <string name="twodes">In driver mode, We use the app for collecting the co-ordinates of moving bus and store it in the azure storage in a table and retrive those in the passenger mode and analyse it!</string>
+
+    <string name="threeTitle">As of now track two buses in driver mode!</string>
+    <string name="threedes">There are two buses that can be tracked, 5B and T70, a testing point has been added in 5B route.In driver mode one should login to the respective bus email ID and password, after that the received GPS data is updated in the azure table every 10seconds.</string>
+
+    <string name="fourTitle">Passenger mode is for the end user.</string>
+    <string name="fourdes">In passenger mode, one needs to choose the desired bus and bus stop and also the refresh rate as every time the location of bus is updated a JSON file from google directions api will be downloaded, on pressing check the bus position is received from the azure table and bus stop positions are hard coded, google maps api is used to plot in the map and google directions api fetched the estimated time.</string>
+
 </resources>
